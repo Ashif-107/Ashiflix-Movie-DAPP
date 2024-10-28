@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 
@@ -36,9 +37,9 @@ export default function Navbar() {
                 <h1 className="text-xl md:text-4xl font-bold mb-3">ASHIFLIX</h1>
             </div>
             <div className="flex gap-4 md:gap-8 md:text-xl text-sm font-semibold">
-                <a href="/">Home</a>
-                <a href="/purchased">Purchased</a>
-                <a href=""> {username ? `${username}` : 'Loading...'}</a>
+                <Link href="/">Home</Link>
+                <Link href="/purchased">Purchased</Link>
+                <Link href=""> {username ? `${username}` : 'Loading...'}</Link>
             </div>
         </div>
     )
