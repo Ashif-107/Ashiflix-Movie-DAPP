@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from './components/Navbar';
 import MovieList from './components/MovieList';
+import Footer from './components/Footer';
+import Loader from './components/Loader';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,16 +15,18 @@ export default function Home() {
 
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('');
+  const [movPresent, isMovPresent] = useState(false);
 
 
   const searchMovies = async () => {
     const res = await fetch(`/api/movies/search?q=${query}`);
     const data = await res.json();
     setMovies(data);
+    isMovPresent(true);
   };
 
 
- 
+
   useEffect(() => {
     const checkAuth = async () => {
       setIsLoading(true);
@@ -79,10 +83,14 @@ export default function Home() {
           <button onClick={searchMovies} className="ml-9 bg-blue-500 text-white rounded-md px-4 py-2 mb-4 hover:bg-blue-600 transition-colors duration-200">Search</button>
         </div>
         <div className='movie-section p'>
-          <MovieList movies={movies} />
+          {!movPresent ? (
+            <Loader/>
+          ) : (
+            <MovieList movies={movies} />
+          )}
         </div>
-
       </div>
+      <Footer />
     </div>
   )
 }

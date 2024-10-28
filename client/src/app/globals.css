@@ -2,3 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+.body {
+  --size: 2vmin;
+  min-height: 70vh;
+  margin: 0;
+  filter: grayscale(1) contrast(250);
+  background-color: transparent;
+  transform: translateZ(0);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.halftone {
+  position: absolute;
+  height: 60vmin;
+  width: 60vmin;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  background-blend-mode: multiply;
+  background-size: calc(var(--size) * .75) calc(var(--size) * .75);
+  background-position: center;
+  background-image:
+    radial-gradient(var(--size) var(--size), hsl(0deg, 0%, 15%), white);
+  transform: rotate(35deg);
+}
+
+.thing {
+  z-index: -1;
+  height: 60vmin;
+  width: 60vmin;
+  border-radius: 50%;
+  overflow: hidden;
+  filter: brightness(.3) blur(calc(var(--size) * .25));
+  background-color: hsl(0deg, 0%, 99%);
+  background-size: 80%;
+  background-position: center left 40%;
+  background-repeat: no-repeat;
+  background-image:
+    url(https://media.tenor.com/exRZ3es-yb8AAAAd/maxwell-maxwell-cat.gif);
+}
+
