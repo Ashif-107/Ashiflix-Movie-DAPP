@@ -46,30 +46,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   }, []);
 
 
-  useEffect(() => {
-    // Reset isPurchased to false when the component mounts
-    setIsPurchased(false);
-
-    const checkIfPurchased = async () => {
-      if (!username) return; // If username is not yet fetched
-      try {
-        console.log(`Checking the movie: ${movie.Title} for user: ${username}`);
-        const response = await fetch(`/api/movies/check?userId=${username}&title=${encodeURIComponent(movie.Title)}`);
-        const data = await response.json();
-        console.log("API response:", data);
-        if (data.purchased) {
-          setIsPurchased(true);
-        }
-      } catch (error) {
-        console.error("Error checking purchase status:", error);
-      }
-    };
-
-    checkIfPurchased();
-    console.log("useEffect triggered with username:", username);
-  }, [username, movie.Title]);
-
-
+ 
   const buyMovie = async () => {
     if (!window.ethereum) {
       alert("Please install MetaMask to purchase movies!");
