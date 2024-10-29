@@ -60,7 +60,7 @@ export default function Login() {
                     <button type="submit" className='bg-[#E50914] text-white text-xl py-2 font-bold'>Login</button>
                     <p className='text-gray-400'>New To Ashiflix? <a className="text-blue-500" href="/signup">Sign up now</a></p>
                 </form>
-                {message && <p>{message}</p>}
+                {message && <p className='text-gray-400'>{message}</p>}
             </div>
         </div>
     );

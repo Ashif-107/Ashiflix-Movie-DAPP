@@ -46,7 +46,7 @@ export default function Navbar({ connectWallet, account, isConnected }: NavbarPr
             <div>
                 {isConnected ?
                     (
-                        <h1 className='md:gap-8 md:text-xl text-sm font-semibold'>{account}</h1>
+                        <h1 className='my-2 md:gap-8 md:text-xl text-sm font-semibold'>{account}</h1>
                     )
                     : (<button
                         onClick={connectWallet}

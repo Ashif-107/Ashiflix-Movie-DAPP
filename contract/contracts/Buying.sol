@@ -5,17 +5,17 @@ contract Buying{
     address public owner;
     uint256 public moviePrice;
 
-    event MoviePurchased(address indexed buyer, string movieName, uint256 movieYear);
+    event MoviePurchased(address indexed buyer, string movieName);
 
     constructor(uint256 _moviePrice) {
         owner = msg.sender;
         moviePrice = _moviePrice;
     }
 
-    function purchaseMovie(string memory movieName, uint256 movieYear) external payable {
+    function purchaseMovie(string memory movieName) external payable {
         require(msg.value >= moviePrice, "Insufficient payment amount");
 
-        emit MoviePurchased(msg.sender, movieName, movieYear);
+        emit MoviePurchased(msg.sender, movieName);
     }
 
     function withdraw() external {
